@@ -41,6 +41,7 @@ public class BaseTest {
     @After
     public void tearDown() {
         webDriver.quit();
+        webDriver = null;
     }
 
 }
