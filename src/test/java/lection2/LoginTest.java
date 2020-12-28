@@ -12,10 +12,10 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void LoginTest() {
-        webDriver.navigate().to("https://litecart.stqa.ru/admin/login.php");
-        webDriver.findElement(By.xpath("//input[@name=\"username\"]")).sendKeys(login);
-        webDriver.findElement(By.xpath("//input[@name=\"password\"]")).sendKeys(password);
-        webDriver.findElement(By.xpath("//button[@name=\"login\"]")).sendKeys(Keys.ENTER);
+        driver.navigate().to("https://litecart.stqa.ru/admin/login.php");
+        driver.findElement(By.xpath("//input[@name=\"username\"]")).sendKeys(login);
+        driver.findElement(By.xpath("//input[@name=\"password\"]")).sendKeys(password);
+        driver.findElement(By.xpath("//button[@name=\"login\"]")).sendKeys(Keys.ENTER);
     }
 
 }

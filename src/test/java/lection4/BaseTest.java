@@ -1,29 +1,25 @@
-package lection2;
+package lection4;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-    public WebDriver driver;
-    public WebDriverWait wait;
+    public WebDriver webDriver;
     String browser = System.getProperty("browser");
-
 
     @Before
     public void setUp() {
         setBrowser();
-        wait = new WebDriverWait(driver, 10);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        String winHandleBefore = driver.getWindowHandle();
-        driver.switchTo().window(winHandleBefore);
+        webDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        webDriver.manage().window().maximize();
+        String winHandleBefore = webDriver.getWindowHandle();
+        webDriver.switchTo().window(winHandleBefore);
     }
 
     private void setBrowser() {
@@ -34,7 +30,7 @@ public class BaseTest {
         if ("chrome".equals(browser)) {
             File chromeDriver = new File("src/main/resources/drivers/chromedriver");
             System.setProperty("webdriver.chrome.driver", chromeDriver.getAbsolutePath());
-            driver = new ChromeDriver();
+            webDriver = new ChromeDriver();
         } else {
             Assert.fail("Can't open browser" + browser);
         }
@@ -42,8 +38,8 @@ public class BaseTest {
 
     @After
     public void tearDown() {
-        driver.quit();
-        driver = null;
+        webDriver.quit();
+        webDriver = null;
     }
 
 }

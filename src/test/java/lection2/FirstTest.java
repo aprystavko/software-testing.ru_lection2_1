@@ -10,9 +10,9 @@ public class FirstTest extends BaseTest {
 
     @Test
     public void myFirstTest() {
-        webDriver.navigate().to("https://www.google.com");
-        webDriver.findElement(By.name("q")).sendKeys("Hello google");
-        webDriver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+        driver.navigate().to("https://www.google.com");
+        driver.findElement(By.name("q")).sendKeys("Hello google");
+        driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
         wait.until(titleIs("Hello google - Пошук Google"));
     }
 
