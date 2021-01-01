@@ -14,8 +14,8 @@ import static org.junit.Assert.assertTrue;
 public class OpenMenuItemsTest1 extends BaseTest {
 
     // Before start test fill data into login and password fields
-    String login = "admin";
-    String password = "0b7dba1c77df25bf0";
+    String login = "";
+    String password = "";
 
     // Urls:
     String adminUrl = "https://litecart.stqa.ru/admin/login.php";
