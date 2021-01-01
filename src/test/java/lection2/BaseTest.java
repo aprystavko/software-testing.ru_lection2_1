@@ -3,8 +3,11 @@ package lection2;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -19,11 +22,21 @@ public class BaseTest {
     @Before
     public void setUp() {
         setBrowser();
-        wait = new WebDriverWait(driver, 10);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, 3);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         String winHandleBefore = driver.getWindowHandle();
         driver.switchTo().window(winHandleBefore);
+    }
+
+    public boolean isElementPresent(By locator) {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            driver.findElement(locator);
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
     }
 
     private void setBrowser() {
